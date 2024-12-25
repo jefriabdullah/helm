@@ -358,7 +358,7 @@ sonarr:
 
   persistence:
     enabled: true
-    path: tv
+    path: tv_shows
     storageClass: ""
     existingClaim: ""
     accessMode: ReadWriteOnce
@@ -516,7 +516,7 @@ qbittorrent:
     path: downloads
     storageClass: ""
     existingClaim: ""
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 800Mi
     additionalVolumes: []
     additionalMounts: []

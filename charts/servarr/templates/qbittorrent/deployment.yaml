@@ -73,6 +73,11 @@ spec:
               name: media
               subPath: {{ .Values.qbittorrent.persistence.path }}
           {{- end }}
+          {{- if and .Values.jellyfin.enabled .Values.jellyfin.persistence.media2.enabled .Values.qbittorrent.persistence.enabled }}
+            - mountPath: "/media2/{{ .Values.qbittorrent.persistence.path }}"
+              name: media2
+              subPath: {{ .Values.qbittorrent.persistence.path }}
+          {{- end }}
           {{- if .Values.qbittorrent.persistence.additionalMounts }}
             {{- .Values.qbittorrent.persistence.additionalMounts | toYaml | nindent 12 }}
           {{- end }}

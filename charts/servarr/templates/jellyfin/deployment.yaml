@@ -145,6 +145,26 @@ spec:
               name: media
               subPath: {{ .Values.readarr.persistence.path }}
             {{- end }}
+            {{- if and .Values.sonarr.enabled .Values.sonarr.persistence.enabled }}
+            - mountPath: "/media2/{{ .Values.sonarr.persistence.path }}"
+              name: media2
+              subPath: {{ .Values.sonarr.persistence.path }}
+            {{- end }}
+            {{- if and .Values.radarr.enabled .Values.radarr.persistence.enabled }}
+            - mountPath: "/media2/{{ .Values.radarr.persistence.path }}"
+              name: media2
+              subPath: {{ .Values.radarr.persistence.path }}
+            {{- end }}
+            {{- if and .Values.lidarr.enabled .Values.lidarr.persistence.enabled }}
+            - mountPath: "/media2/{{ .Values.lidarr.persistence.path }}"
+              name: media2
+              subPath: {{ .Values.lidarr.persistence.path }}
+            {{- end }}
+            {{- if and .Values.readarr.enabled .Values.readarr.persistence.enabled }}
+            - mountPath: "/media2/{{ .Values.readarr.persistence.path }}"
+              name: media2
+              subPath: {{ .Values.readarr.persistence.path }}
+            {{- end }}
           {{- if .Values.jellyfin.extraContainers }}
           {{- toYaml .Values.jellyfin.extraContainers | nindent 8 }}
           {{- end }}

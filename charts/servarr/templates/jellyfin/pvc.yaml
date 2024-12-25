@@ -87,7 +87,7 @@ spec:
   resources:
     requests:
       storage: {{ .Values.jellyfin.persistence.media2.size | quote }}
-  {{- if .Values.jellyfin.persistence.media.storageClass }}
+  {{- if .Values.jellyfin.persistence.media2.storageClass }}
   {{- if (eq "-" .Values.jellyfin.persistence.media2.storageClass) }}
   storageClassName: ""
   {{- else }}

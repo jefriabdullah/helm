@@ -64,6 +64,13 @@ spec:
           {{- else }}
           emptyDir: { }
           {{- end }}
+        - name: media2
+          {{- if and .Values.jellyfin.enabled .Values.jellyfin.persistence.media2.enabled .Values.sonarr.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-jellyfin-media2
+          {{- else }}
+          emptyDir: { }
+          {{- end }}
         {{- if .Values.sonarr.persistence.additionalVolumes }}
           {{- .Values.sonarr.persistence.additionalVolumes | toYaml | nindent 8}}
         {{- end }}
