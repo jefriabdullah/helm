@@ -62,3 +62,36 @@ spec:
   {{- end }}
   {{- end }}
 {{- end }}
+
+---
+{{- if and .Values.jellyfin.persistence.media2.enabled (not .Values.jellyfin.persistence.media2.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Release.Name }}-jellyfin-media2
+  labels:
+    app.kubernetes.io/name: jellyfin
+    app.kubernetes.io/instance: {{ .Release.Name | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+  {{- with .Values.jellyfin.persistence.media2.labels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.jellyfin.persistence.media2.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  accessModes:
+    - {{ .Values.jellyfin.persistence.media2.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.jellyfin.persistence.media2.size | quote }}
+  {{- if .Values.jellyfin.persistence.media.storageClass }}
+  {{- if (eq "-" .Values.jellyfin.persistence.media2.storageClass) }}
+  storageClassName: ""
+  {{- else }}
+  storageClassName: "{{ .Values.jellyfin.persistence.media2.storageClass }}"
+  {{- end }}
+  {{- end }}
+{{- end }}

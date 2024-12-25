@@ -1,4 +1,3 @@
-
 ## Default values for Jellyfin
 
 ## @section Jellyfin parameters
@@ -82,9 +81,9 @@ jellyfin:
   enableDLNA: false
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 8096
-    nodePort: ""
+    nodePort: "30001"
     annotations: {}
     labels: {}
     loadBalancerIP: ""
@@ -94,12 +93,13 @@ jellyfin:
   ingress:
     enabled: false
     labels: {}
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     path: /
     hosts:
-      - chart-example.local
+      - jellyfin.serverdemo.net
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:
@@ -117,22 +117,33 @@ jellyfin:
       annotations: {}
     media:
       enabled: true
-      storageClass: ""
+      storageClass: "nfs-media1"
       existingClaim: ""
       subPath: ""
-      accessMode: ReadWriteOnce
+      accessMode: ReadWriteMany
+      size: 10Gi
+      labels: {}
+      annotations: {}
+    media2:
+      enabled: true
+      storageClass: "nfs-media2"
+      existingClaim: ""
+      subPath: ""
+      accessMode: ReadWriteMany
       size: 10Gi
       labels: {}
       annotations: {}
 
-    extraExistingClaimMounts: []
+    extraExistingClaimMounts:
+      []
       # - name: external-mount
       #   mountPath: /srv/external-mount
       ## If defined, a manually managed PVC must be created before volume binding
       #   existingClaim:
       #   readOnly: true
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #  cpu: 100m
     #  memory: 128Mi
@@ -146,16 +157,19 @@ jellyfin:
 
   affinity: {}
 
-  extraVolumes: []
+  extraVolumes:
+    []
     #- name: renderD129
     #  hostPath:
     #    path: /dev/dri/renderD129
 
-  extraVolumeMounts: []
+  extraVolumeMounts:
+    []
     #- mountPath: /dev/dri/renderD129
     #  name: renderD129
 
-  extraEnvVars: []
+  extraEnvVars:
+    []
     #- name: MY_ENV_VAR
     #  value: my-env-var-value
 
@@ -165,16 +179,16 @@ jellyfin:
 
   podSecurityContext: {}
   # Jellyfin can be run as an unprivileged user with the following settings:
-    # runAsUser: 65534
-    # runAsGroup: 65534
+  # runAsUser: 65534
+  # runAsGroup: 65534
 
   securityContext: {}
   # For example, you might need to grant the following capabilities to enable hardware acceleration when mounting a /dev/dri device:
-    # capabilities:
-    #   add:
-    #     - "SYS_ADMIN"
-    #   drop:
-    #     - "ALL"
+  # capabilities:
+  #   add:
+  #     - "SYS_ADMIN"
+  #   drop:
+  #     - "ALL"
 
   livenessProbe:
     enabled: false
@@ -272,10 +286,12 @@ sonarr:
 
   podAnnotations: {}
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # fsGroup: 2000
 
-  securityContext: {}
+  securityContext:
+    {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -284,20 +300,22 @@ sonarr:
     # runAsUser: 1000
 
   # -- Init Containers
-  initContainers: []
+  initContainers:
+    []
     # - name: init-container
     #   image: busybox
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 80
-    nodePort: ""
+    nodePort: "30002"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -310,7 +328,8 @@ sonarr:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -419,10 +438,12 @@ qbittorrent:
 
   podAnnotations: {}
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # fsGroup: 2000
 
-  securityContext: {}
+  securityContext:
+    {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -430,25 +451,27 @@ qbittorrent:
     # runAsNonRoot: true
     # runAsUser: 1000
 
-  initContainers: []
+  initContainers:
+    []
     # - name: init-container
     #   image: busybox
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
     web:
-      type: ClusterIP
+      type: NodePort
       port: 8080
-      nodePort: ""
+      nodePort: "30003"
     bt:
-      type: ClusterIP
+      type: NodePort
       port: 6881
-      nodePort: ""
+      nodePort: "30004"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -461,7 +484,8 @@ qbittorrent:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -566,10 +590,12 @@ prowlarr:
 
   podAnnotations: {}
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # fsGroup: 2000
 
-  securityContext: {}
+  securityContext:
+    {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -578,20 +604,22 @@ prowlarr:
     # runAsUser: 1000
 
   # -- Init Containers
-  initContainers: []
+  initContainers:
+    []
     # - name: init-container
     #   image: busybox
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 9696
-    nodePort: ""
+    nodePort: "30005"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -604,7 +632,8 @@ prowlarr:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -723,20 +752,22 @@ flaresolverr:
     seccompProfile:
       type: RuntimeDefault
 
-  initContainers: []
+  initContainers:
+    []
     # - name: init-container
     #   image: busybox
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 8191
-    nodePort: ""
+    nodePort: "30006"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -749,7 +780,8 @@ flaresolverr:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -835,10 +867,12 @@ jellyseerr:
 
   podAnnotations: {}
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # fsGroup: 2000
 
-  securityContext: {}
+  securityContext:
+    {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -847,20 +881,22 @@ jellyseerr:
     # runAsUser: 1000
 
   # -- Init Containers
-  initContainers: []
+  initContainers:
+    []
     # - name: init-container
     #   image: busybox
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 5055
-    nodePort: ""
+    nodePort: "30007"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -873,7 +909,8 @@ jellyseerr:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -971,10 +1008,12 @@ bazarr:
 
   podAnnotations: {}
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # fsGroup: 2000
 
-  securityContext: {}
+  securityContext:
+    {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -982,20 +1021,22 @@ bazarr:
     # runAsNonRoot: true
     # runAsUser: 1000
 
-  initContainers: []
+  initContainers:
+    []
     # - name: init-container
     #   image: busybox
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 6767
-    nodePort: ""
+    nodePort: "30008"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -1008,7 +1049,8 @@ bazarr:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -1113,10 +1155,12 @@ radarr:
 
   podAnnotations: {}
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # fsGroup: 2000
 
-  securityContext: {}
+  securityContext:
+    {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -1124,20 +1168,22 @@ radarr:
     # runAsNonRoot: true
     # runAsUser: 1000
 
-  initContainers: []
+  initContainers:
+    []
     # - name: init-container
     #   image: busybox
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 7878
-    nodePort: ""
+    nodePort: "30009"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -1150,7 +1196,8 @@ radarr:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -1257,10 +1304,12 @@ lidarr:
 
   podAnnotations: {}
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # fsGroup: 2000
 
-  securityContext: {}
+  securityContext:
+    {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -1268,20 +1317,22 @@ lidarr:
     # runAsNonRoot: true
     # runAsUser: 1000
 
-  initContainers: []
+  initContainers:
+    []
     # - name: init-container
     #   image: busybox
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 8686
-    nodePort: ""
+    nodePort: "30010"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -1294,7 +1345,8 @@ lidarr:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -1401,10 +1453,12 @@ readarr:
 
   podAnnotations: {}
 
-  podSecurityContext: {}
+  podSecurityContext:
+    {}
     # fsGroup: 2000
 
-  securityContext: {}
+  securityContext:
+    {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -1419,14 +1473,15 @@ readarr:
     #   command: ['sh', '-c', 'echo "this is an init container"']
 
   service:
-    type: ClusterIP
+    type: NodePort
     port: 8787
-    nodePort: ""
+    nodePort: "30011"
 
   ingress:
     enabled: false
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
@@ -1439,7 +1494,8 @@ readarr:
     #    hosts:
     #      - chart-example.local
 
-  resources: {}
+  resources:
+    {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
