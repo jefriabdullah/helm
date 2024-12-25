@@ -516,7 +516,7 @@ qbittorrent:
     path: downloads
     storageClass: "local-path"
     existingClaim: ""
-    accessMode: ReadWriteMany
+    accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
     additionalMounts: []
