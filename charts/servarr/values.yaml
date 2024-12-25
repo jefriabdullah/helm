@@ -108,7 +108,7 @@ jellyfin:
   persistence:
     config:
       enabled: true
-      storageClass: ""
+      storageClass: "local-path"
       existingClaim: ""
       subPath: ""
       accessMode: ReadWriteOnce
@@ -359,7 +359,7 @@ sonarr:
   persistence:
     enabled: true
     path: tv_shows
-    storageClass: ""
+    storageClass: "local-path"
     existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
@@ -514,7 +514,7 @@ qbittorrent:
   persistence:
     enabled: true
     path: downloads
-    storageClass: ""
+    storageClass: "local-path"
     existingClaim: ""
     accessMode: ReadWriteMany
     size: 800Mi
@@ -662,7 +662,7 @@ prowlarr:
 
   persistence:
     enabled: true
-    storageClass: ""
+    storageClass: "local-path"
     existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
@@ -933,7 +933,7 @@ jellyseerr:
 
   persistence:
     enabled: true
-    storageClass: ""
+    storageClass: "local-path"
     existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
@@ -1078,7 +1078,7 @@ bazarr:
 
   persistence:
     enabled: true
-    storageClass: ""
+    storageClass: "local-path"
     existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
@@ -1227,7 +1227,7 @@ radarr:
   persistence:
     enabled: true
     path: movies
-    storageClass: ""
+    storageClass: "local-path"
     existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
@@ -1376,7 +1376,7 @@ lidarr:
   persistence:
     enabled: true
     path: music
-    storageClass: ""
+    storageClass: "local-path"
     existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
@@ -1525,7 +1525,7 @@ readarr:
   persistence:
     enabled: true
     path: books
-    storageClass: ""
+    storageClass: "local-path"
     existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
