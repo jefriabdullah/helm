@@ -143,7 +143,9 @@ jellyfin:
       #   readOnly: true
 
   resources:
-    {}
+    limits:
+      nvidia.com/gpu: 1
+    #{}
     # limits:
     #  cpu: 100m
     #  memory: 128Mi
@@ -169,7 +171,12 @@ jellyfin:
     #  name: renderD129
 
   extraEnvVars:
-    []
+    - name: NVIDIA_VISIBLE_DEVICES
+      value: all
+    - name: NVIDIA_DRIVER_CAPABILITIES
+      value: all
+
+    #[]
     #- name: MY_ENV_VAR
     #  value: my-env-var-value
 
