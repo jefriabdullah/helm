@@ -353,7 +353,7 @@ sonarr:
   env:
     PUID: "1000"
     PGID: "1000"
-    TZ: "Europe/London"
+    TZ: "Asia/Kuala_Lumpur"
     UMASK: "002"
 
   persistence:
@@ -509,7 +509,7 @@ qbittorrent:
   env:
     PUID: "1000"
     PGID: "1000"
-    TZ: "Europe/London"
+    TZ: "Asia/Kuala_Lumpur"
 
   persistence:
     enabled: true
@@ -657,7 +657,7 @@ prowlarr:
   env:
     PUID: "1000"
     PGID: "1000"
-    TZ: "Europe/London"
+    TZ: "Asia/Kuala_Lumpur"
     UMASK: "002"
 
   persistence:
@@ -1074,7 +1074,7 @@ bazarr:
   env:
     PUID: "1000"
     PGID: "1000"
-    TZ: "Europe/London"
+    TZ: "Asia/Kuala_Lumpur"
 
   persistence:
     enabled: true
@@ -1221,7 +1221,7 @@ radarr:
   env:
     PUID: "1000"
     PGID: "1000"
-    TZ: "Europe/London"
+    TZ: "Asia/Kuala_Lumpur"
     UMASK: "002"
 
   persistence:
@@ -1370,7 +1370,7 @@ lidarr:
   env:
     PUID: "1000"
     PGID: "1000"
-    TZ: "Europe/London"
+    TZ: "Asia/Kuala_Lumpur"
     UMASK: "002"
 
   persistence:
@@ -1519,7 +1519,7 @@ readarr:
   env:
     PUID: "1000"
     PGID: "1000"
-    TZ: "Europe/London"
+    TZ: "Asia/Kuala_Lumpur"
     UMASK: "002"
 
   persistence:
