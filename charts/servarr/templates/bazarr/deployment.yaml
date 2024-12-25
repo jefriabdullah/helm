@@ -78,6 +78,11 @@ spec:
               name: media
               subPath: {{ .Values.radarr.persistence.path }}
           {{- end }}
+          {{- if and .Values.jellyfin.enabled .Values.jellyfin.persistence.media2.enabled .Values.radarr.persistence.enabled .Values.bazarr.persistence.enabled }}
+            - mountPath: "/media2/{{ .Values.radarr.persistence.path }}"
+              name: media2
+              subPath: {{ .Values.radarr.persistence.path }}
+          {{- end }}
           {{- if .Values.bazarr.persistence.additionalMounts }}
             {{- .Values.bazarr.persistence.additionalMounts | toYaml | nindent 12 }}
           {{- end }}

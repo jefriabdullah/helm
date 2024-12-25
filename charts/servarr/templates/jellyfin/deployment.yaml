@@ -191,6 +191,13 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
+      - name: media2
+      {{- if .Values.jellyfin.persistence.media2.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ if .Values.jellyfin.persistence.media2.existingClaim }}{{ .Values.jellyfin.persistence.media2.existingClaim }}{{- else }}{{ .Release.Name }}-jellyfin-media2{{- end }}
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
       {{- range .Values.jellyfin.persistence.extraExistingClaimMounts }}
       - name: {{ .name }}
         persistentVolumeClaim:

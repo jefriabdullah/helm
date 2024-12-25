@@ -87,6 +87,10 @@ spec:
             - mountPath: /media
               name: media
           {{- end }}
+          {{- if and .Values.jellyfin.enabled .Values.jellyfin.persistence.media2.enabled .Values.radarr.persistence.enabled }}
+            - mountPath: /media2
+              name: media2
+          {{- end }}
           {{- if .Values.radarr.persistence.additionalMounts }}
             {{- .Values.radarr.persistence.additionalMounts | toYaml | nindent 12 }}
           {{- end }}
