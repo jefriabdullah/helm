@@ -109,7 +109,7 @@ jellyfin:
     config:
       enabled: true
       storageClass: "local-path2"
-      existingClaim: "servarr-jellyfin-config"
+      existingClaim: ""
       subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
@@ -360,7 +360,7 @@ sonarr:
     enabled: true
     path: tv_shows
     storageClass: "local-path2"
-    existingClaim: "servarr-sonarr"
+    existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -515,7 +515,7 @@ qbittorrent:
     enabled: true
     path: downloads
     storageClass: "local-path2"
-    existingClaim: "servarr-qbittorrent"
+    existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -663,7 +663,7 @@ prowlarr:
   persistence:
     enabled: true
     storageClass: "local-path2"
-    existingClaim: "servarr-prowlarr"
+    existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -934,7 +934,7 @@ jellyseerr:
   persistence:
     enabled: true
     storageClass: "local-path2"
-    existingClaim: "servarr-jellyseerr"
+    existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -1079,7 +1079,7 @@ bazarr:
   persistence:
     enabled: true
     storageClass: "local-path2"
-    existingClaim: "servarr-bazarr"
+    existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -1228,7 +1228,7 @@ radarr:
     enabled: true
     path: movies
     storageClass: "local-path2"
-    existingClaim: "servarr-radarr"
+    existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -1377,7 +1377,7 @@ lidarr:
     enabled: true
     path: music
     storageClass: "local-path2"
-    existingClaim: "servarr-lidarr"
+    existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -1526,7 +1526,7 @@ readarr:
     enabled: true
     path: books
     storageClass: "local-path2"
-    existingClaim: "servarr-readarr"
+    existingClaim: ""
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
