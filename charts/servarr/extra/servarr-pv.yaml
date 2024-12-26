@@ -1,0 +1,368 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-media1
+  labels:
+    storage.k8s.io/name: nfs-media1
+spec:
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+    - ReadWriteMany
+  capacity:
+    storage: 916Gi
+  storageClassName: "nfs-media1"
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 172.16.0.12
+    path: /mnt/pve/media2/media/
+    readOnly: no
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-jellyfin-media
+spec:
+  storageClassName: "nfs-media1"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr
+  selector:
+    matchLabels:
+      storage.k8s.io/name: nfs-media1
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-media2
+  labels:
+    storage.k8s.io/name: nfs-media2
+spec:
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+    - ReadWriteMany
+  capacity:
+    storage: 813Gi
+  storageClassName: "nfs-media2"
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 172.16.0.12
+    path: /pve-data/media/
+    readOnly: no
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-jellyfin-media
+spec:
+  storageClassName: "nfs-media2"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr
+  selector:
+    matchLabels:
+      storage.k8s.io/name: nfs-media2
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-jellyfin-config
+  labels:
+    app: servarr-jellyfin-config
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/jellyfin
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-jellyfin-config
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-jellyfin-config
+  selector:
+    matchLabels:
+      app: servarr-jellyfin-config
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-sonarr
+  labels:
+    app: servarr-sonarr
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/sonarr
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-sonarr
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-sonarr
+  selector:
+    matchLabels:
+      app: servarr-sonarr
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-qbittorrent
+  labels:
+    app: servarr-qbittorrent
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/qbittorrent
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-qbittorrent
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-qbittorrent
+  selector:
+    matchLabels:
+      app: servarr-qbittorrent
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-prowlarr
+  labels:
+    app: servarr-prowlarr
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/prowlarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-prowlarr
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-prowlarr
+  selector:
+    matchLabels:
+      app: servarr-prowlarr
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-jellyseerr
+  labels:
+    app: servarr-jellyseerr
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/jellyseerr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-jellyseerr
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-jellyseerr
+  selector:
+    matchLabels:
+      app: servarr-jellyseerr
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-bazarr
+  labels:
+    app: servarr-bazarr
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/bazarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-bazarr
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-bazarr
+  selector:
+    matchLabels:
+      app: servarr-bazarr
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-radarr
+  labels:
+    app: servarr-radarr
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/radarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-radarr
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-radarr
+  selector:
+    matchLabels:
+      app: servarr-radarr
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-lidarr
+  labels:
+    app: servarr-lidarr
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/lidarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-lidarr
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-lidarr
+  selector:
+    matchLabels:
+      app: servarr-lidarr
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-servarr-readarr
+  labels:
+    app: servarr-readarr
+spec:
+  storageClassName: "servarr"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /opt/servarr/readarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: servarr-readarr
+spec:
+  storageClassName: "servarr"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  volumeName: pv-servarr-readarr
+  selector:
+    matchLabels:
+      app: servarr-readarr

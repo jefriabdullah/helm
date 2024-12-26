@@ -127,7 +127,7 @@ jellyfin:
     media2:
       enabled: true
       storageClass: "nfs-media2"
-      existingClaim: "servarr-jellyfin-media"
+      existingClaim: "servarr-jellyfin-media2"
       subPath: ""
       accessMode: ReadWriteMany
       size: 10Gi
