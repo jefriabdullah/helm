@@ -263,7 +263,6 @@ spec:
   claimRef:
     name: servarr-bazarr
   capacity:
-  capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
