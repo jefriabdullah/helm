@@ -30,8 +30,8 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeMode: Filesystem
-  volumeName: pv-servarr
+  # volumeMode: Filesystem
+  # volumeName: pv-servarr
   selector:
     matchLabels:
       storage.k8s.io/name: nfs-media1
@@ -69,8 +69,8 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeMode: Filesystem
-  volumeName: pv-servarr
+  # volumeMode: Filesystem
+  # volumeName: pv-servarr
   selector:
     matchLabels:
       storage.k8s.io/name: nfs-media2
