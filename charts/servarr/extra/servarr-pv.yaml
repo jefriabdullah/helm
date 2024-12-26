@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: servarr-jellyfin-media1
+  name: servarr-jellyfin-media
 spec:
   storageClassName: "nfs-media1"
   accessModes:
