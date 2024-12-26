@@ -194,6 +194,7 @@ spec:
   storageClassName: "servarr"
   claimRef:
     name: servarr-prowlarr
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
@@ -228,6 +229,7 @@ spec:
   storageClassName: "servarr"
   claimRef:
     name: servarr-jellyseerr
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
@@ -262,6 +264,7 @@ spec:
   storageClassName: "servarr"
   claimRef:
     name: servarr-bazarr
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
@@ -296,6 +299,7 @@ spec:
   storageClassName: "servarr"
   claimRef:
     name: servarr-radarr
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
@@ -330,6 +334,7 @@ spec:
   storageClassName: "servarr"
   claimRef:
     name: servarr-lidarr
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
@@ -364,6 +369,7 @@ spec:
   storageClassName: "servarr"
   claimRef:
     name: servarr-readarr
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
