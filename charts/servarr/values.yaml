@@ -108,8 +108,8 @@ jellyfin:
   persistence:
     config:
       enabled: true
-      storageClass: "local-path2"
-      existingClaim: ""
+      storageClass: "servarr"
+      existingClaim: "servarr-jellyfin-config"
       subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
@@ -118,7 +118,7 @@ jellyfin:
     media:
       enabled: true
       storageClass: "nfs-media1"
-      existingClaim: ""
+      existingClaim: "servarr-jellyfin-media"
       subPath: ""
       accessMode: ReadWriteMany
       size: 10Gi
@@ -127,7 +127,7 @@ jellyfin:
     media2:
       enabled: true
       storageClass: "nfs-media2"
-      existingClaim: ""
+      existingClaim: "servarr-jellyfin-media"
       subPath: ""
       accessMode: ReadWriteMany
       size: 10Gi
@@ -366,8 +366,8 @@ sonarr:
   persistence:
     enabled: true
     path: tv_shows
-    storageClass: "local-path2"
-    existingClaim: ""
+    storageClass: "servarr"
+    existingClaim: "servarr-sonarr"
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -521,8 +521,8 @@ qbittorrent:
   persistence:
     enabled: true
     path: downloads
-    storageClass: "local-path2"
-    existingClaim: ""
+    storageClass: "servarr"
+    existingClaim: "servarr-qbittorrent"
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -669,8 +669,8 @@ prowlarr:
 
   persistence:
     enabled: true
-    storageClass: "local-path2"
-    existingClaim: ""
+    storageClass: "servarr"
+    existingClaim: "servarr-prowlarr"
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -940,8 +940,8 @@ jellyseerr:
 
   persistence:
     enabled: true
-    storageClass: "local-path2"
-    existingClaim: ""
+    storageClass: "servarr"
+    existingClaim: "servarr-jellyseerr"
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -1085,8 +1085,8 @@ bazarr:
 
   persistence:
     enabled: true
-    storageClass: "local-path2"
-    existingClaim: ""
+    storageClass: "servarr"
+    existingClaim: "servarr-bazarr"
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -1234,8 +1234,8 @@ radarr:
   persistence:
     enabled: true
     path: movies
-    storageClass: "local-path2"
-    existingClaim: ""
+    storageClass: "servarr"
+    existingClaim: "servarr-radarr"
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -1383,8 +1383,8 @@ lidarr:
   persistence:
     enabled: true
     path: music
-    storageClass: "local-path2"
-    existingClaim: ""
+    storageClass: "servarr"
+    existingClaim: "servarr-lidarr"
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
@@ -1532,8 +1532,8 @@ readarr:
   persistence:
     enabled: true
     path: books
-    storageClass: "local-path2"
-    existingClaim: ""
+    storageClass: "servarr"
+    existingClaim: "servarr-readarr"
     accessMode: ReadWriteOnce
     size: 800Mi
     additionalVolumes: []
