@@ -84,6 +84,9 @@ metadata:
     app: servarr-jellyfin-config
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-jellyfin-config
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
@@ -117,6 +120,9 @@ metadata:
     app: servarr-sonarr
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-sonarr
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
@@ -151,6 +157,9 @@ metadata:
     app: servarr-qbittorrent
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-qbittorrent
+    namespace: default
   capacity:
     storage: 1Gi
   accessModes:
@@ -183,6 +192,8 @@ metadata:
     app: servarr-prowlarr
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-prowlarr
   capacity:
     storage: 1Gi
   accessModes:
@@ -215,6 +226,8 @@ metadata:
     app: servarr-jellyseerr
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-jellyseerr
   capacity:
     storage: 1Gi
   accessModes:
@@ -247,6 +260,9 @@ metadata:
     app: servarr-bazarr
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-bazarr
+  capacity:
   capacity:
     storage: 1Gi
   accessModes:
@@ -279,6 +295,8 @@ metadata:
     app: servarr-radarr
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-radarr
   capacity:
     storage: 1Gi
   accessModes:
@@ -311,6 +329,8 @@ metadata:
     app: servarr-lidarr
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-lidarr
   capacity:
     storage: 1Gi
   accessModes:
@@ -343,6 +363,8 @@ metadata:
     app: servarr-readarr
 spec:
   storageClassName: "servarr"
+  claimRef:
+    name: servarr-readarr
   capacity:
     storage: 1Gi
   accessModes:
