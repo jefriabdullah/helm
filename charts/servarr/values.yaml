@@ -76,7 +76,7 @@ jellyfin:
   image:
     #repository: lscr.io/linuxserver/jellyfin
     repository: registry.serverdemo.net/jellyfin
-    tag: "gt710"
+    tag: "gt710-latest"
     pullPolicy: IfNotPresent
 
   enableDLNA: false
