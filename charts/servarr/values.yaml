@@ -74,8 +74,9 @@ jellyfin:
   replicaCount: 1
 
   image:
-    repository: lscr.io/linuxserver/jellyfin
-    tag: "10.10.1"
+    #repository: lscr.io/linuxserver/jellyfin
+    repository: registry.serverdemo.net/jellyfin
+    tag: "gt710"
     pullPolicy: IfNotPresent
 
   enableDLNA: false
