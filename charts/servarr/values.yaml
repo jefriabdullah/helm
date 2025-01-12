@@ -154,7 +154,8 @@ jellyfin:
     #  cpu: 100m
     #  memory: 128Mi
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -352,7 +353,8 @@ sonarr:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -508,7 +510,8 @@ qbittorrent:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -656,7 +659,8 @@ prowlarr:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -804,7 +808,8 @@ flaresolverr:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -933,7 +938,8 @@ jellyseerr:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -1073,7 +1079,8 @@ bazarr:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -1220,7 +1227,8 @@ radarr:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -1369,7 +1377,8 @@ lidarr:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
@@ -1518,7 +1527,8 @@ readarr:
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
-  nodeSelector: {}
+  nodeSelector:
+    workload: servarr
 
   tolerations: []
 
